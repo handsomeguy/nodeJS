@@ -1,0 +1,23 @@
+{
+  "name": "wechat",
+  "version": "1.0.0",
+  "description": "this is a personal project",
+  "main": "app.js",
+  "keywords": [
+    "wechat",
+    "node",
+    "angular"
+  ],
+  "author": "Jackson",
+  "devDependencies":{
+    "body-parser": "^1.15.2",
+    "connect": "^2.30.2",
+    "cookie-parser": "^1.4.3",
+    "events": "^1.1.1",
+    "express": "^4.6.1",
+    "express-session": "^1.14.0",
+    "formidable": "^1.0.17",
+    "lodash": "^4.14.0",
+    "mongoose": "^4.5.7"
+  }
+}

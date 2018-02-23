@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>angular</title>
+	<script type="text/javascript" src='../js/jquery-2.2.3.min.js'></script>
+</head>
+<body>
+
+<!--<div ng-app="hello" ng-control='ngCon'>-->
+ 	<!--<p>名字 : <input type="text" ng-model="name"></p>-->
+ 	<!--<h1>{{name}}</h1>-->
+ 	<!--<p> welcome!!asdasdasd!</p>-->
+<!--</div>-->
+<form action="/register" method="post">
+   账号：<input type="text" name="account" id="account">
+   密码：<input type="password" name="password" id="password">
+    <button id="submit" type="button">增加新用户</button>
+</form>
+<form action="/register" method="post">
+   账号：<input type="text" name="account" id="account2">
+   密码：<input type="password" name="password" id="password2">
+    <button id="login" type="button">登录</button>
+</form>
+<form action="/register" method="post">
+    <button id="getlist" type="button">获取好友列表</button>
+</form>
+<form action="/register" method="post">
+   查询用户id：<input type="text" name="account" id="value2">
+    <button id="search" type="button">查询用户信息</button>
+</form>
+<form action="/register" method="post">
+   接收者id：<input type="text" name="account" id="receiver">
+   发送内容：<input type="text" name="account" id="content">
+    <button id="sendinfor" type="button">发送信息</button>
+</form>
+<form action="/register" method="post">
+   好友id：<input type="text" name="account" id="asdasd">
+    <button id="getrecord" type="button">获取聊天记录</button>
+</form>
+<form action="/register" method="post">
+   昵称<input type="text" name="account" id="nickname">
+   年龄<input type="text" name="account" id="123a">
+   邮箱<input type="text" name="account" id="asd15">
+   地址<input type="text" name="account" id="2315">
+   个人介绍<input type="text" name="account" id="xasas1">
+
+    <button id="15xa6s5" type="button">设置个人信息</button>
+</form>
+<form action="/register" method="post">
+    <button id="getrecord23232" type="button">获取未读消息</button>
+</form>
+<form action="/register" method="post">
+    <button id="asdasd1521" type="button">退出登录</button>
+</form>
+
+
+<!--<img src="../image/pic.jpg">-->
+<script>
+
+$(document).ready(function(){
+    $('#asdasd1521').click(function(){
+        $.ajax({
+            type:'get',
+            url:'/logout',
+            success:function(data){
+//                var data = JSON.parse(data);
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+    $('#getrecord23232').click(function(){
+        $.ajax({
+            type:'get',
+            url:'/getUnreadChatRecord',
+            success:function(data){
+//                var data = JSON.parse(data);
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+    $('#submit').click(function(){
+        var ac = $('#account').val();
+        var ps = $('#password').val();
+        $.ajax({
+            type:'post',
+            url:'/register',
+            data:{
+                account:ac,
+                password:ps
+            },
+            success:function(data){
+//                var data = JSON.parse(data);
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+    $('#login').click(function(){
+        var ac = $('#account2').val();
+        var ps = $('#password2').val();
+        $.ajax({
+            type:'get',
+            url:'/login',
+            data:{
+                account:ac,
+                password:ps
+            },
+            success:function(data){
+//                var data = JSON.parse(data);
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+    $('#getlist').click(function(){
+        $.ajax({
+            type:'get',
+            url:'/getList',
+            success:function(data){
+//                var data = JSON.parse(data);
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+    $('#search').click(function(){
+        var value = $('#value2').val();
+        $.ajax({
+            type:'get',
+            url:'/getUserInfor',
+            data:'id='+value,
+            success:function(data){
+//                var data = JSON.parse(data);
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+    $('#sendinfor').click(function(){
+        var receiver = $('#receiver').val();
+        var content = $('#content').val();
+        $.ajax({
+            type:'post',
+            url:'/sendContent',
+            data:{
+                receiver:receiver,
+                content:content
+            },
+            success:function(data){
+//                var data = JSON.parse(data);
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+    $('#getrecord').click(function(){
+        var id = $('#asdasd').val();
+        $.ajax({
+            type:'get',
+            url:'/getChatRecord',
+            data:'id='+id,
+            success:function(data){
+//                var data = JSON.parse(data);
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+    $('#15xa6s5').click(function(){
+       
+        $.ajax({
+            type:'post',
+            url:'/updateUserInfor',
+            data:{
+                  nickname:$('#nickname').val(),
+                    age:$('#123a').val(),
+                    mailbox:$('#asd15').val(),
+                    address:$('#2315').val(),
+                    introduction:$('#xasas1').val()
+            },
+            success:function(data){
+//                var data = JSON.parse(data);
+                console.log(data);
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    })
+})
+</script>
+</body>
+</html>
